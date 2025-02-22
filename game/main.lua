@@ -16,6 +16,8 @@ function love.update(dt) -- updates as often as possible -- dt (delta time) time
 end
 
 function love.draw()
+	love.graphics.reset()
+	drawMap()
 	love.graphics.setColor(255, 0, 0, 128)
 	love.graphics.print("Hello world!", 100, 100)
 	love.graphics.line(0, 0, 400, 400)
@@ -27,9 +29,7 @@ function love.draw()
 	love.graphics.polygon("fill",
 		{currentX+0,100, currentX+200,100, 
 			currentX+200,300, currentX+0,300}
-	)
-
-	drawMap()
+	)	
 end
 
 function love.quit()
