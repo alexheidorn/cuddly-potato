@@ -30,7 +30,7 @@ function createSprite()
 end
 
 function drawSprite()
-	local x, y = 100, 100
+	local x, y = love.graphics.getWidth() / 2, love.graphics.getHeight() / 2
 	love.graphics.draw(chopper, activeFrame, x, y)
 end
 
