@@ -1,17 +1,20 @@
+require "lib/map-functions"
+
 function love.load()
 	love.graphics.setBackgroundColor(255, 255, 255, 255)
+	loadMap('/assets/maps/chez-peter.lua')
 end
 
-function love.update()
+local currentX = 0
+function love.update(dt) -- updates as often as possible -- dt (delta time) time sinxe last frame
 	print("Hello!")
 	if currentX < love.graphics.getWidth() then
-		currentX = currentX + 1
+		currentX = currentX + 100 * dt --dt normalizes the speed
 	else
 		currentX = 0
 	end
 end
 
-currentX = 0
 function love.draw()
 	love.graphics.setColor(255, 0, 0, 128)
 	love.graphics.print("Hello world!", 100, 100)
@@ -25,6 +28,8 @@ function love.draw()
 		{currentX+0,100, currentX+200,100, 
 			currentX+200,300, currentX+0,300}
 	)
+
+	drawMap()
 end
 
 function love.quit()
