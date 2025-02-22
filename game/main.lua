@@ -10,6 +10,7 @@ end
 local currentX = 0
 function love.update(dt) -- updates as often as possible -- dt (delta time) time sinxe last frame
 	print("Hello!")
+	updateSprite(dt)
 	if currentX < love.graphics.getWidth() then
 		currentX = currentX + 100 * dt --dt normalizes the speed
 	else
