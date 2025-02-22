@@ -1,6 +1,7 @@
 require "lib/map-functions"
 require "lib/sprite-functions"
 
+
 function love.load()
 	love.graphics.setBackgroundColor(255, 255, 255, 255)
 	loadMap('/assets/maps/chez-peter.lua')
@@ -18,6 +19,8 @@ function love.update(dt) -- updates as often as possible -- dt (delta time) time
 	end
 end
 
+local circleX, circleY = love.graphics.getWidth()/2, love.graphics.getHeight()/2
+
 function love.draw()
 	love.graphics.reset()
 	drawMap()
@@ -29,11 +32,30 @@ function love.draw()
 	love.graphics.setColor(0, 0, 255, 255)
 	love.graphics.line(0,  love.graphics.getHeight()/2, love.graphics.getWidth(), love.graphics.getHeight()/2)
 
-	love.graphics.setColor(0, 255, 0, 42)
+	love.graphics.setColor(0, 255, 0, 2)
 	love.graphics.polygon("fill",
 		{currentX+0,100, currentX+200,100, 
 			currentX+200,300, currentX+0,300}
 	)	
+
+	love.graphics.setColor(0, 0, 0, 255)
+	love.graphics.circle("fill", circleX, circleY, 50)
+end
+
+function love.keypressed(key)
+	if key == "escape" then
+		love.event.quit()
+	end
+
+	-- event-based keyboard input
+	if key == "left" then
+		circleX = circleX - 100
+	end
+
+	if key == "right" then
+		circleX = circleX + 100
+	end
+	
 end
 
 function love.quit()
