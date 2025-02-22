@@ -7,6 +7,7 @@ function love.update()
 end
 
 function love.draw()
+	love.graphics.setColor(255, 0, 0, 128)
 	love.graphics.print("Hello world!", 100, 100)
 	love.graphics.line(0, 0, 400, 400)
 end
