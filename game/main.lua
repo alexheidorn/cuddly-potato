@@ -2,7 +2,11 @@ require "lib/map-functions"
 require "lib/sprite-functions"
 
 
+
 function love.load()
+	camera = require "lib/camera"
+	cam = camera()
+
 	love.keyboard.setKeyRepeat(true)
 	love.graphics.setBackgroundColor(255, 255, 255, 255)
 	loadMap('/assets/maps/chez-peter.lua')
@@ -18,14 +22,18 @@ function love.update(dt) -- updates as often as possible -- dt (delta time) time
 	else
 		currentX = 0
 	end
+
+	cam:lookAt(x, y)
 end
 
 local circleX, circleY = love.graphics.getWidth()/2, love.graphics.getHeight()/2
 
 function love.draw()
 	love.graphics.reset()
-	drawMap()
-	drawSprite()
+	cam:attach()
+		drawMap()
+		drawSprite()
+	cam:detach()
 	love.graphics.setColor(255, 0, 0, 128)
 	love.graphics.print("Hello world!", 100, 100)
 	love.graphics.line(0, 0, 400, 400)
@@ -50,11 +58,11 @@ function love.keypressed(key)
 
 	-- event-based keyboard input
 	if key == "left" then
-		circleX = circleX - 100
+		circleX = circleX - 1
 	end
 
 	if key == "right" then
-		circleX = circleX + 100
+		circleX = circleX + 1
 	end
 	
 end
