@@ -26,9 +26,6 @@ function newMap(tileW, tileH, tilesetPath, tileString, quadInfo)
 			tileTable[#tileTable][#tileTable[#tileTable]+1] = char -- add the character to the row
 		end
 	end
-		
-	
-	
 end
 
 function drawMap()
