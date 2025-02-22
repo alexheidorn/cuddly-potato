@@ -27,10 +27,13 @@ function createSprite()
 end
 
 function drawSprite()
-	love.graphics.draw(chopper, frames[currentFrame])
+	love.graphics.draw(chopper, activeFrame, x, y)
 end
 
+local elapsedTime = 0
 function updateSprite(dt)
+	elapsedTime = elapsedTime + dt
+	
 	currentFrame = currentFrame + 1
 	if currentFrame > #frames then
 		currentFrame = 1
