@@ -29,3 +29,11 @@ end
 function drawSprite()
 	love.graphics.draw(chopper, frames[currentFrame])
 end
+
+function updateSprite(dt)
+	currentFrame = currentFrame + 1
+	if currentFrame > #frames then
+		currentFrame = 1
+	end
+	activeFrame = frames[currentFrame]
+end
