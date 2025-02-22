@@ -3,6 +3,7 @@ require "lib/sprite-functions"
 
 
 function love.load()
+	love.keyboard.setKeyRepeat(true)
 	love.graphics.setBackgroundColor(255, 255, 255, 255)
 	loadMap('/assets/maps/chez-peter.lua')
 	createSprite()
