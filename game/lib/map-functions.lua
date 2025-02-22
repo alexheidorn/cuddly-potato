@@ -18,27 +18,22 @@ function newMap(tileW, tileH, tilesetPath, tileString, quadInfo)
 
 	tileTable = {}
 
-	local mapWidth = tileString:match("[^\n]+"):len()
+	local mapWidth = #tileString:match("[^\n]+") -- number of columns in the map (width)
 
-	for i = 1, mapWidth, 1 do
-		tileTable[i] = {}
-	end
-	
-	local rowIndex, columnIndex = 1, 1
-	for line in tileString:gmatch("[^\n]+") do
-		columnIndex = 1
-		for char in line:gmatch(".") do
-			tileTable[columnIndex][rowIndex] = char
-			columnIndex = columnIndex + 1
+	for line in tileString:gmatch("[^\n]+") do -- iterate over each line in the map
+		tileTable[#tileTable+1] = {} -- add a new row to the map table
+		for char in line:gmatch(".") do -- iterate over each character in the line
+			tileTable[#tileTable][#tileTable[#tileTable]+1] = char -- add the character to the row
 		end
-	rowIndex = rowIndex + 1
 	end
-
+		
+	
+	
 end
 
 function drawMap()
 	for rowIndex = 1, #tileTable do
-		local row = tileTable[rowInex]
+		local row = tileTable[rowIndex]
 		for colIndex = 1, #row do
 			local char = row[colIndex]
 			local x, y = (colIndex - 1) * tileWidth, (rowIndex - 1) * tileHeight
