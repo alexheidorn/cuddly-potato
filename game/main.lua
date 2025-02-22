@@ -1,8 +1,10 @@
 require "lib/map-functions"
+require "lib/sprite-functions"
 
 function love.load()
 	love.graphics.setBackgroundColor(255, 255, 255, 255)
 	loadMap('/assets/maps/chez-peter.lua')
+	createSprite()
 end
 
 local currentX = 0
@@ -18,6 +20,7 @@ end
 function love.draw()
 	love.graphics.reset()
 	drawMap()
+	drawSprite()
 	love.graphics.setColor(255, 0, 0, 128)
 	love.graphics.print("Hello world!", 100, 100)
 	love.graphics.line(0, 0, 400, 400)
