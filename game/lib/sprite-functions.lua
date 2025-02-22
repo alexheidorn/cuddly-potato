@@ -6,6 +6,7 @@ local activeFrame
 local currentFrame = 1
 
 local spriteWidth, spriteHeight, spriteSheet
+local rotation = math.rad(90)
 
 function createSprite()
 	-- sprite = love.graphics.newImage("assets/sprites/character.png")
@@ -31,7 +32,7 @@ end
 
 function drawSprite()
 	local x, y = love.graphics.getWidth() / 2 - spriteWidth / 2, love.graphics.getHeight() / 2 - spriteHeight / 2
-	local rotation = math.rad(90)
+
 	love.graphics.draw(chopper, activeFrame, x, y, rotation)
 end
 
@@ -46,6 +47,7 @@ function updateSprite(dt)
 		end
 		activeFrame = frames[currentFrame]
 		elapsedTime = 0
+		rotation = rotation + math.rad(90)
 	end 
 	
 end
