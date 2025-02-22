@@ -31,14 +31,15 @@ end
 
 function drawSprite()
 	local x, y = love.graphics.getWidth() / 2 - spriteWidth / 2, love.graphics.getHeight() / 2 - spriteHeight / 2
-	love.graphics.draw(chopper, activeFrame, x, y)
+	local rotation = math.rad(90)
+	love.graphics.draw(chopper, activeFrame, x, y, rotation)
 end
 
 local elapsedTime = 0
 function updateSprite(dt)
 	elapsedTime = elapsedTime + dt
 	
-	if elapsedTime > 1 then
+	if elapsedTime > 0.1 then
 		currentFrame = currentFrame + 1
 		if currentFrame > #frames then
 			currentFrame = 1
