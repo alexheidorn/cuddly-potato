@@ -55,18 +55,18 @@ function updateSprite(dt)
 
 	-- polling-based keyboard input
 	if love.keyboard.isDown("a") then
-		x = x -1
+		x = x - 100 * dt
 	end
 
 	if love.keyboard.isDown("d") then
-		x = x + 1
+		x = x + 100 * dt
 	end
 
 	if love.keyboard.isDown("w") then
-		y = y - 1
+		y = y - 100 * dt
 	end
 
 	if love.keyboard.isDown("s") then
-		y = y + 1
+		y = y + 100 * dt
 	end
 end
