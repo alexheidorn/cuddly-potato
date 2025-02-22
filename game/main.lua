@@ -6,6 +6,9 @@ require "lib/sprite-functions"
 function love.load()
 	camera = require "lib/camera"
 	cam = camera()
+	cam:zoomTo(2)
+	cam:lockX(0, camera.smooth.damped(10))
+	cam:lockY(0, camera.smooth.damped(10))
 
 	love.keyboard.setKeyRepeat(true)
 	love.graphics.setBackgroundColor(255, 255, 255, 255)
@@ -14,6 +17,8 @@ function love.load()
 end
 
 local currentX = 0
+local circleX, circleY = love.graphics.getWidth()/2, love.graphics.getHeight()/2
+
 function love.update(dt) -- updates as often as possible -- dt (delta time) time sinxe last frame
 	print("Hello!")
 	updateSprite(dt)
@@ -23,10 +28,8 @@ function love.update(dt) -- updates as often as possible -- dt (delta time) time
 		currentX = 0
 	end
 
-	cam:lookAt(x, y)
+	cam:lookAt(circleX, circleY)
 end
-
-local circleX, circleY = love.graphics.getWidth()/2, love.graphics.getHeight()/2
 
 function love.draw()
 	love.graphics.reset()
