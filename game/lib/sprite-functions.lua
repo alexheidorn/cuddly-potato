@@ -47,7 +47,8 @@ function updateSprite(dt)
 		end
 		activeFrame = frames[currentFrame]
 		elapsedTime = 0
-		rotation = rotation + math.rad(90)
 	end 
-	
+	if elapsedTime > 1/ 60 then -- rotate every frame
+		rotation = rotation + math.rad(5)
+	end
 end
