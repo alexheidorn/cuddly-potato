@@ -7,6 +7,7 @@ local currentFrame = 1
 
 local spriteWidth, spriteHeight, spriteSheet
 local rotation = math.rad(90)
+local x, y = love.graphics.getWidth() / 2, love.graphics.getHeight() / 2
 
 function createSprite()
 	-- sprite = love.graphics.newImage("assets/sprites/character.png")
@@ -31,7 +32,6 @@ function createSprite()
 end
 
 function drawSprite()
-	local x, y = love.graphics.getWidth() / 2, love.graphics.getHeight() / 2
 	local scaleX, scaleY = 1, 1
 	local originX, originY = spriteWidth / 2, spriteHeight / 2
 	love.graphics.draw(chopper, activeFrame, x, y, rotation, scaleX, scaleY, originX, originY)
@@ -51,5 +51,22 @@ function updateSprite(dt)
 	end 
 	if elapsedTime > 1/ 60 then -- rotate every frame
 		rotation = rotation + math.rad(5)
+	end
+
+	-- polling-based keyboard input
+	if love.keyboard.isDown("a") then
+		x = x -1
+	end
+
+	if love.keyboard.isDown("d") then
+		x = x + 1
+	end
+
+	if love.keyboard.isDown("w") then
+		y = y - 1
+	end
+
+	if love.keyboard.isDown("s") then
+		y = y + 1
 	end
 end
