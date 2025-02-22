@@ -34,9 +34,13 @@ local elapsedTime = 0
 function updateSprite(dt)
 	elapsedTime = elapsedTime + dt
 	
-	currentFrame = currentFrame + 1
-	if currentFrame > #frames then
-		currentFrame = 1
-	end
-	activeFrame = frames[currentFrame]
+	if elapsedTime > 1 then
+		currentFrame = currentFrame + 1
+		if currentFrame > #frames then
+			currentFrame = 1
+		end
+		activeFrame = frames[currentFrame]
+		elapsedTime = 0
+	end 
+	
 end
